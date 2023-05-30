@@ -35,10 +35,20 @@ namespace ApiTcc.Controllers
          [HttpPost]
         public async Task<IActionResult> AdicionarAgendamento (Agendamento novoAgendamento)
         {
+            try
+            {
             await _context.Agendamento.AddAsync(novoAgendamento);
             await _context.SaveChangesAsync();
 
             return Ok(novoAgendamento);
+
+            }
+            catch (Exception ex)
+            {
+                 return BadRequest(ex.Message);
+            }
+
+            
         }
 
          [HttpPut]

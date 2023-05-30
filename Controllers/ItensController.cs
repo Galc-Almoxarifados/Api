@@ -1,18 +1,26 @@
+using System.Security.Claims;
 using ApiTcc.Data;
 using ApiTcc.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace ApiTcc.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[Controller]")]
     public class ItensController : ControllerBase
     {
         private readonly DataContext _context;
-        public ItensController(DataContext context)
+        private readonly IConfiguration _configuration;
+
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        public ItensController(DataContext context, IHttpContextAccessor httpContextAccessor, IConfiguration configuration )
         {
             _context = context;
+            _configuration = configuration;
+            _httpContextAccessor = httpContextAccessor;
         }
         
           [HttpGet("GetAllItens")]
@@ -65,29 +73,37 @@ namespace ApiTcc.Controllers
             }
         }
 
-       /* [HttpPost]
-        public async Task<IActionResult> AddItem(Itens novoItem)
+
+        private async Task<bool> ItemExistente (string nomeItem)
+        {
+            return await _context.Itens.AnyAsync(x => x.nome == nomeItem);
+
+        }
+
+        [HttpPost("RegistrarItem")]
+        public async Task<IActionResult> AdicionarItem (Itens novoitem)
         {
             try
             {
-                
-                await _context.Itens.AddAsync(novoItem);
-                await _context.SaveChangesAsync();
-                return Ok(novoItem);
-            }
-            catch ( Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }*/
 
-        [HttpPost]
-        public async Task<IActionResult> AdicionarItem (Itens novoitem)
-        {
+                if(await ItemExistente(novoitem.nome))
+                   throw new System.Exception("este item já foi cadastrado");
+
+                /*int utilizadorId = int.Parse(_httpContextoAcessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+                novoitem.Utilizadores = _context.Utilizadores.FirstOrDefault(uBuscar => uBuscar.idUtilizador == utilizadorId); */  
+
+
             await _context.Itens.AddAsync(novoitem);
             await _context.SaveChangesAsync();
 
             return Ok(novoitem);
+
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            
         }
         
 
@@ -96,6 +112,7 @@ namespace ApiTcc.Controllers
         public async Task<IActionResult> Update(Itens ItemAtualizado)
         {
             try{
+
                 _context.Itens.Update(ItemAtualizado);
                 int linhasAfetadas = await _context.SaveChangesAsync();
 

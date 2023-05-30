@@ -51,24 +51,6 @@ namespace ApiTccAtt.Controllers
             }
         }
 
-        [HttpGet("{id}")]
-        public async Task <IActionResult> GetIdItem(int id)
-        {
-            try 
-            {
-                Item_Equipamento i = await _context.Item_Equipamento
-                
-                    .FirstOrDefaultAsync(iBusca => iBusca.idItem == id);
-                    
-
-                    return Ok(i);
-
-            }
-            catch(Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
 
          [HttpPut]
         public async Task<IActionResult> Update(Item_Equipamento ItemEquipamentoAtualizado)

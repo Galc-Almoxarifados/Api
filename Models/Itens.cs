@@ -12,6 +12,7 @@ namespace ApiTcc.Models
     public class Itens
     {
         [Key]
+        // [JsonIgnore]
        [Column("idITem")]
        public int idITem { get; set; }
 

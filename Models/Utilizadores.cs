@@ -34,6 +34,7 @@ namespace ApiTcc.Models
 
         [NotMapped]
         public string? passwordString {get; set;}
+        //public string Perfil { get; set; }
 
         [NotMapped]
         public string? Token {get; set;}

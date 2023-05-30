@@ -55,6 +55,8 @@ namespace ApiTccAtt.Controllers
         public async Task<IActionResult> Update(TipodeItem TipodeItemAtualizado)
         {
             try{
+
+
                 _context.TipodeItem.Update(TipodeItemAtualizado);
                 int linhasAfetadas = await _context.SaveChangesAsync();
 

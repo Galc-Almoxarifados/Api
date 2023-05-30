@@ -1,19 +1,17 @@
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 using ApiTcc.Data;
 using ApiTcc.Models;
 using ApiTcc.Utils;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
 namespace ApiTcc.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[Controller]")]
     public class UtilizadoresController : ControllerBase
@@ -26,8 +24,7 @@ namespace ApiTcc.Controllers
             _configuration = configuration;
         }
 
-        [HttpPost]
-        public async Task<bool> UsuarioExistente (string em)
+        private async Task<bool> UsuarioExistente (string em)
         {
             if(await _context.Utilizadores.AnyAsync(x => x.emUtilizador == em))
             {
@@ -35,9 +32,8 @@ namespace ApiTcc.Controllers
             }
             return false;
         }
-
+        [AllowAnonymous]
         [HttpPost("Registrar")]
-
         public async Task<IActionResult> RegistrarUtilizador(Utilizadores em)
         {
             try 
@@ -59,7 +55,7 @@ namespace ApiTcc.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
+        [AllowAnonymous]
         [HttpPost("Autenticar")]
         public async Task<IActionResult> AutenticarUtilizador(Utilizadores credenciais)
         {
@@ -74,7 +70,14 @@ namespace ApiTcc.Controllers
                     throw new System.Exception("Senha incorreta.");
                 else
                 {
-                    return Ok (CriarToken(utilizadores));
+            
+                    _context.Utilizadores.Update(utilizadores);
+                    await _context.SaveChangesAsync(); //Confirma a alteração no banco
+                    
+                    utilizadores.PasswordHash = null;
+                    utilizadores.PasswordHash = null;
+                    utilizadores.Token = CriarToken(utilizadores);
+                    return Ok(utilizadores);
                     
                 }
             }
@@ -84,7 +87,7 @@ namespace ApiTcc.Controllers
                 return BadRequest(ex.Message); 
             }
         }
-
+ 
         [HttpPut("AlterarSenha")]
         public async Task<IActionResult> AlterarSenhaUtilizador(Utilizadores credenciais)
         {
@@ -109,8 +112,10 @@ namespace ApiTcc.Controllers
                 return BadRequest(ex.Message);
             }
         }
+    
 
         [HttpGet("GetAll")]
+        
         public async Task<IActionResult> GetUtilizadores()
         {
             try
@@ -183,13 +188,13 @@ namespace ApiTcc.Controllers
             }
         }
 
-        private string CriarToken(Utilizadores utilizadores)
+       private string CriarToken(Utilizadores utilizadores)
         {
         List<Claim> claims = new List<Claim>
         {
             new Claim(ClaimTypes.NameIdentifier, utilizadores.idUtilizador.ToString()),
             new Claim(ClaimTypes.Name, utilizadores.nmUtilizador),
-            
+            //new Claim(ClaimTypes.Role, usuario.Perfil)
             
         };
 
@@ -208,7 +213,6 @@ namespace ApiTcc.Controllers
             SecurityToken token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }
-
 
         
         

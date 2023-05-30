@@ -71,22 +71,39 @@ namespace ApiTcc.Controllers
          [HttpPut]
         public async Task<IActionResult> AlterarEstoque (Estoque alteradoEstoque)
         {
-             _context.Estoque.Update(alteradoEstoque);
+            try
+            {
+            _context.Estoque.Update(alteradoEstoque);
             await _context.SaveChangesAsync();
 
             return Ok(alteradoEstoque);
-        }
+
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            }
 
 
         [HttpDelete("{id}")]
 
         public async Task<IActionResult> Excluir (int id)
         {
-            Estoque pRemover = await _context.Estoque.FirstOrDefaultAsync(p => p.idItem == id);
+            try
+            {
+                 Estoque pRemover = await _context.Estoque.FirstOrDefaultAsync(p => p.idItem == id);
 
             _context.Estoque.Remove(pRemover);
             await _context.SaveChangesAsync();
             return Ok(id);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            
+           
         }
     }
 }

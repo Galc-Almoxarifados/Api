@@ -67,13 +67,34 @@ namespace ApiTcc.Controllers
             }
         }
 
+        private async Task<bool> EquipamentoExistente (string nomeEquipamento)
+        {
+            return await _context.Equipamentos.AnyAsync(x => x.nmEquipamento == nomeEquipamento);
+
+        }
+
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPost]
         public async Task<IActionResult> AdicionarEquipamento (Equipamentos novoEquipamento)
         {
+            try
+            {
+                if (await EquipamentoExistente(novoEquipamento.nmEquipamento))
+                    throw new System.Exception("já existe um equipamento com esse nome cadastrado");
+
             await _context.Equipamentos.AddAsync(novoEquipamento);
             await _context.SaveChangesAsync();
 
-            return Ok(novoEquipamento);
+            return Created("",novoEquipamento);
+
+            }
+            catch (Exception ex)
+            {
+                 return BadRequest(ex.Message);
+            }
+
+            
         }
 
         [HttpPut]
