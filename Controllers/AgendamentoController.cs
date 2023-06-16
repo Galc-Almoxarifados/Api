@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using ApiTcc.Data;
 using ApiTcc.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -12,9 +13,11 @@ namespace ApiTcc.Controllers
     {
 
          private readonly DataContext _context;
-        public AgendamentoController(DataContext context)
+         private readonly IHttpContextAccessor _httpContextAccessor;
+        public AgendamentoController(DataContext context, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
+            _httpContextAccessor = httpContextAccessor;
         }
 
          [HttpGet("GetAllAgendamentos")]
@@ -87,5 +90,15 @@ namespace ApiTcc.Controllers
 
         
     }
+
+    private int ObterUsuarioId()
+            {
+                return int.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+            }
+
+            private string ObterPerfilUsuario()
+            {
+                return _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.Role);
+            }
 }
 }

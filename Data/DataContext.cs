@@ -25,29 +25,33 @@ namespace ApiTcc.Data
         public DbSet<SatatusAgendamento> StatusAgendamento{get; set;}
         public DbSet<TipoMovimentacao> TipoMovimentacao{get; set;}
         public DbSet<TipodeItem> TipodeItem{get; set;}
-        public DbSet<TipoUtilizador> TipoUtilizador{get; set;}
+        
         public DbSet<StatusItem> StatusItem{get; set;}
 
-
-    
+        
         
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-           Utilizadores user = new Utilizadores();
+
+            
+            Utilizadores user = new Utilizadores();
             Criptografia.CriarPasswordHash("123456", out byte[] hash, out byte[]salt);
             user.idUtilizador = 1;
-            user.nmUtilizador = "UsuarioAdmin";
+            user.nmUtilizador = "Carlos";
+            user.Perfil = "Almoxarife";
             user.passwordString = string.Empty;
             user.PasswordHash = hash;
             user.passwordSalt = salt;
-            user.emUtilizador = "seuEmail@gmail.com";
+            user.emUtilizador = "Carlos@gmail.com";
 
-
-            modelBuilder.Entity<Utilizadores>().HasData(user); 
+                       modelBuilder.Entity<Utilizadores>().HasData(user); 
+ modelBuilder.Entity<Utilizadores>().Property(u => u.Perfil).HasDefaultValue("Anonymous");
 
             
         }
+
+        
 
     
     }

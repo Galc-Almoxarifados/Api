@@ -14,14 +14,11 @@ namespace ApiTcc.Models
         [Column("idUtilizador")]
         public int idUtilizador { get; set; }
 
-        [Column("idTipoUtilizador")]
-        public int idTipoUtilizador { get; set; }
-
         [Column("nmUtilizador")]
         public string? nmUtilizador { get; set; }
 
         [Column("dcUtilizador")]
-        public DateTime dcUtilizador { get; set; }
+        public DateTime dcUtilizador { get; set; } = DateTime.Now;
 
         [Column("emUtilizador")]
         public string? emUtilizador { get; set; }
@@ -32,12 +29,16 @@ namespace ApiTcc.Models
         [Column("PasswordHash")]
         public Byte[]? PasswordHash { get; set; }
 
+        [Column("Perfil")]
+        public string? Perfil { get; set; }
+
         [NotMapped]
         public string? passwordString {get; set;}
-        //public string Perfil { get; set; }
 
         [NotMapped]
         public string? Token {get; set;}
+        //[NotMapped]
+        //[Required]
         
 
 

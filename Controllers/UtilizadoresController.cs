@@ -87,7 +87,7 @@ namespace ApiTcc.Controllers
                 return BadRequest(ex.Message); 
             }
         }
- 
+        [AllowAnonymous]
         [HttpPut("AlterarSenha")]
         public async Task<IActionResult> AlterarSenhaUtilizador(Utilizadores credenciais)
         {
@@ -165,6 +165,7 @@ namespace ApiTcc.Controllers
         }
 
         //Método para alteração do e-mail
+        [AllowAnonymous]
         [HttpPut("AtualizarEmail")]
         public async Task<IActionResult> AtualizarEmail(Utilizadores u)
         {
@@ -194,7 +195,7 @@ namespace ApiTcc.Controllers
         {
             new Claim(ClaimTypes.NameIdentifier, utilizadores.idUtilizador.ToString()),
             new Claim(ClaimTypes.Name, utilizadores.nmUtilizador),
-            //new Claim(ClaimTypes.Role, usuario.Perfil)
+            new Claim(ClaimTypes.Role, utilizadores.Perfil)
             
         };
 

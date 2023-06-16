@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ApiTcc.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("[Controller]")]
     public class ItensController : ControllerBase
@@ -144,5 +144,15 @@ namespace ApiTcc.Controllers
             
 
         }
+
+        private int ObterUtilizadorId()
+            {
+                return int.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+            }
+
+            private string ObterPerfilUtilizador()
+            {
+                return _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.Role);
+            }
     }
 }

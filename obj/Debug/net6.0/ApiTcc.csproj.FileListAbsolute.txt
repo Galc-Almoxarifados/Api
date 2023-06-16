@@ -810,12 +810,7 @@ D:\ApiTccAtt\obj\Debug\net6.0\refint\ApiTcc.dll
 D:\ApiTccAtt\obj\Debug\net6.0\ApiTcc.pdb
 D:\ApiTccAtt\obj\Debug\net6.0\ApiTcc.genruntimeconfig.cache
 D:\ApiTccAtt\obj\Debug\net6.0\ref\ApiTcc.dll
-C:\Users\migue\Desktop\ApiTccAttMexendoNaEtec\bin\Debug\net6.0\publish\web.config
 C:\Users\migue\Desktop\ApiTccAttMexendoNaEtec\bin\Debug\net6.0\appsettings.Development.json
-C:\Users\migue\Desktop\ApiTccAttMexendoNaEtec\bin\Debug\net6.0\publish\ApiTcc.deps.json
-C:\Users\migue\Desktop\ApiTccAttMexendoNaEtec\bin\Debug\net6.0\publish\ApiTcc.runtimeconfig.json
-C:\Users\migue\Desktop\ApiTccAttMexendoNaEtec\bin\Debug\net6.0\publish\appsettings.Development.json
-C:\Users\migue\Desktop\ApiTccAttMexendoNaEtec\bin\Debug\net6.0\publish\appsettings.json
 C:\Users\migue\Desktop\ApiTccAttMexendoNaEtec\bin\Debug\net6.0\appsettings.json
 C:\Users\migue\Desktop\ApiTccAttMexendoNaEtec\bin\Debug\net6.0\ApiTcc.exe
 C:\Users\migue\Desktop\ApiTccAttMexendoNaEtec\bin\Debug\net6.0\ApiTcc.deps.json
