@@ -13,9 +13,6 @@ namespace ApiTcc.Models
         [Column("idStatusAgendamento")]
         public int idStatusAgendamento { get; set; }
 
-        [Column("idResponsavel")]
-        public int idResponsavel { get; set; }
-
         [Column("idItem")]
         public int idItem { get; set; }
 
