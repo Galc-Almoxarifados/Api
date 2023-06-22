@@ -1,6 +1,7 @@
 using System.Security.Claims;
 using ApiTcc.Data;
 using ApiTcc.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,6 +21,7 @@ namespace ApiTcc.Controllers
             _httpContextAccessor = httpContextAccessor;
         }
 
+        [AllowAnonymous]
          [HttpGet("GetAllAgendamentos")]
         public async Task<IActionResult> ListarAgendamentos()
         {

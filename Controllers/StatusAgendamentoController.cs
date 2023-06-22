@@ -38,7 +38,7 @@ namespace ApiTccAtt.Controllers
         {
             try 
             {
-                SatatusAgendamento i = await _context.StatusAgendamento
+                StatusAgendamento i = await _context.StatusAgendamento
                 
                     .FirstOrDefaultAsync(iBusca => iBusca.idStatusAgendamento == id);
 
@@ -52,7 +52,7 @@ namespace ApiTccAtt.Controllers
         }
 
          [HttpPut]
-        public async Task<IActionResult> Update(SatatusAgendamento statusAgendamentoAtualizado)
+        public async Task<IActionResult> Update(StatusAgendamento statusAgendamentoAtualizado)
         {
             try{
                 _context.StatusAgendamento.Update(statusAgendamentoAtualizado);

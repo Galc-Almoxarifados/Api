@@ -164,11 +164,6 @@ C:\Users\migue\Desktop\ApiTcc\obj\Debug\net6.0\refint\ApiTcc.dll
 C:\Users\migue\Desktop\ApiTcc\obj\Debug\net6.0\ApiTcc.pdb
 C:\Users\migue\Desktop\ApiTcc\obj\Debug\net6.0\ApiTcc.genruntimeconfig.cache
 C:\Users\migue\Desktop\ApiTcc\obj\Debug\net6.0\ref\ApiTcc.dll
-C:\Users\migue\Desktop\ApiTcc\obj\Debug\net6.0\staticwebassets\msbuild.ApiTcc.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\migue\Desktop\ApiTcc\obj\Debug\net6.0\staticwebassets\msbuild.build.ApiTcc.props
-C:\Users\migue\Desktop\ApiTcc\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.ApiTcc.props
-C:\Users\migue\Desktop\ApiTcc\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.ApiTcc.props
-C:\Users\migue\Desktop\ApiTcc\obj\Debug\net6.0\staticwebassets.pack.json
 D:\ApiTcc\bin\Debug\net6.0\appsettings.Development.json
 D:\ApiTcc\bin\Debug\net6.0\appsettings.json
 D:\ApiTcc\bin\Debug\net6.0\ApiTcc.exe
@@ -988,3 +983,9 @@ D:\TCC\ApiTcc\obj\Debug\net6.0\refint\ApiTcc.dll
 D:\TCC\ApiTcc\obj\Debug\net6.0\ApiTcc.pdb
 D:\TCC\ApiTcc\obj\Debug\net6.0\ApiTcc.genruntimeconfig.cache
 D:\TCC\ApiTcc\obj\Debug\net6.0\ref\ApiTcc.dll
+C:\Users\migue\Desktop\ApiTcc\bin\Debug\net6.0\publish\web.config
+C:\Users\migue\Desktop\ApiTcc\bin\Debug\net6.0\publish\ApiTcc.deps.json
+C:\Users\migue\Desktop\ApiTcc\bin\Debug\net6.0\publish\ApiTcc.runtimeconfig.json
+C:\Users\migue\Desktop\ApiTcc\bin\Debug\net6.0\publish\appsettings.Development.json
+C:\Users\migue\Desktop\ApiTcc\bin\Debug\net6.0\publish\appsettings.json
+C:\Users\migue\Desktop\ApiTcc\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

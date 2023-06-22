@@ -16,7 +16,7 @@ namespace ApiTcc.Models
        public int UUID { get; set; }
 
        [Column("idResponsavel")]
-       public int idREsponsavel { get; set; }
+       public int idResponsavel { get; set; }
 
        [Column("idAlmoxarife")]
        public int idAlmoxarife { get; set; }

@@ -10,11 +10,8 @@ namespace ApiTcc.Models
         [Column("idAgendamento")]
         public int idAgendamento { get; set; }
 
-        [Column("idStatusAgendamento")]
-        public int idStatusAgendamento { get; set; }
-
-        [Column("idItem")]
-        public int idItem { get; set; }
+        [Column("nomeItem")]
+        public string? nomeItem { get; set; }
 
         [Column("qtAgendamento")]
        public int qtAgendamento { get; set; }    

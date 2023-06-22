@@ -22,7 +22,7 @@ namespace ApiTcc.Data
         public DbSet<Agendamento> Agendamento {get; set;}
         public DbSet<Equipamentos> Equipamentos {get; set;}
         public DbSet<Item_Equipamento> Item_Equipamento{get; set;}
-        public DbSet<SatatusAgendamento> StatusAgendamento{get; set;}
+        public DbSet<StatusAgendamento> StatusAgendamento{get; set;}
         public DbSet<TipoMovimentacao> TipoMovimentacao{get; set;}
         public DbSet<TipodeItem> TipodeItem{get; set;}
         

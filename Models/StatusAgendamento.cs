@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace ApiTcc.Models
 {
     [Table("StatusAgendamento")]
-    public class SatatusAgendamento
+    public class StatusAgendamento
     {
         [Key]
         [Column("idStatusAgendamento")]
